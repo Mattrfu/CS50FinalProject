@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Confirmation
+{% endblock %}
+
+{% block main %}
+    <form action="/confirmation" method ="post">
+    <!--Table with conformation action items-->
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">Hours</th>
+              <th scope="col">Minutes</th>
+              <th scope="col">Selection</th>
+              <th scope="col">Change Hours</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in rows%}
+              <tr>
+                <td>{{row["username"]}}</td>
+                <td>{{row["hours"]}}</td>
+                <td>{{row["minutes"]}}</td>
+                <td>
+                    <select name = {{row['selectName']}} class="browser-default custom-select" style="max-width:65%">
+                        <option selected value="Confirm">Confirm</option>
+                        <option value="Deny">Deny</option>
+                    </select>
+                </td>
+                <td>
+                <div class="form-group">
+                    <input autocomplete="off" autofocus class="form-control" style="max-width:65%" name= {{row['customName']}} placeholder="Add Custom # of Hours" type="number" step = "1" min = "0">
+                </div>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+    </table>
+    <!--Button to confirm, deny, or add hours-->
+    <button class="btn btn-primary" type="submit">Go</button>
+    </form>
+{% endblock %}

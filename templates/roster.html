@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Roster
+{% endblock %}
+
+{% block main %}
+  <form action="/roster" method ="post">
+      <!--Table with total team information-->
+      <table class="table">
+          <thead>
+              <tr>
+                <th scope="col">Total Team Hours</th>
+                <th scope="col">Total Team Minutes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{TTHOURS}}</td>
+                <td>{{TTMINUTES}}</td>
+              </tr>
+           </tbody>
+      </table>
+      <!--Table with subteam information-->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Subteam</th>
+            <th scope="col">Hours Logged In</th>
+            <th scope="col">Minutes Logged In</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in subteamList %}
+            <tr>
+              <td>{{row["subteam"]}}</td>
+              <td>{{row["hours"]}}</td>
+              <td>{{row["minutes"]}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <!--Table with user information-->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Subteam</th>
+            <th scope="col">Edit Subteams</th>
+            <th scope="col">Position</th>
+            <th scope="col">Hours Logged In</th>
+            <th scope="col">Minutes Logged In</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in memberList %}
+            <tr>
+              <td>{{row["username"]}}</td>
+              <td>
+                <select name = {{row['selectSubteam']}} class="browser-default custom-select" style="max-width:65%">
+                    <option selected value="{{row["subteam"]}}">{{row["subteam"]}}</option>
+                    {% for subteam in subteams %}
+                      {% if subteam["subteam"] != row["subteam"] %}
+                          <option value={{subteam["subteam"]}}>{{subteam["subteam"]}}</option>
+                      {% endif %}
+                    {% endfor %}
+                </select>
+              </td>
+              <td>
+                  <select name = {{row['addDrop']}} style="max-width:25%">
+                    <option selected value="add">Add</option>
+                    <option value="drop">Drop</option>
+                  </select>
+                      <input autocomplete="off" autofocus class="form-control" style="max-width:50%" name= {{row['customSubteam']}} placeholder="Enter Subteam" type="text">
+              </td>
+              <td>
+                <select name = {{row['selectPosition']}} class="browser-default custom-select" style="max-width:65%">
+                  <option selected value="{{row["position"]}}">{{row["position"]}}</option>
+                  {% for position in positions %}
+                    {% if position != row["position"] %}
+                        <option value={{position}}>{{position}}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </td>
+              <td>{{row["hours"]}}</td>
+              <td>{{row["minutes"]}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button class="btn btn-warning" type="submit">Change</button>
+  </form>
+{% endblock %}

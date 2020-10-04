@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Check In
+{% endblock %}
+
+{% block main %}
+    <!--Table displaying user's hours and minutes-->
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Hours</th>
+              <th scope="col">Minutes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{HOURS}}</td>
+              <td>{{MINUTES}}</td>
+            </tr>
+         </tbody>
+    </table>
+    <form action="/" method ="POST">
+        <!--Check in button-->
+        <button class="btn btn-danger btn-lg" type="submit">Check In</button>
+    </form>
+{% endblock %}

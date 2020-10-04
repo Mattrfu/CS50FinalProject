@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Check Out
+{% endblock %}
+
+{% block main %}
+    <!--Table displaying informatino of last login-->
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Hours</th>
+              <th scope="col">Minutes</th>
+              <th scope="col">Last Login</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{HOURS}}</td>
+              <td>{{MINUTES}}</td>
+              <td>{{LASTLOGIN}}</td>
+            </tr>
+         </tbody>
+    </table>
+    <form action="/" method ="POST">
+        <!--Check out button-->
+        <button class="btn btn-danger btn-lg" type="submit">Check Out</button>
+    </form>
+    <!-- https://stackoverflow.com/questions/23101966/bootstrap-alert-auto-close-->
+{% endblock %}

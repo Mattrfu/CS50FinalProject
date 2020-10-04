@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Administrator History
+{% endblock %}
+
+{% block main %}
+    <form action="/history" method ="post">
+      <!--Select user's history to check-->
+        <select name = "username" class="browser-default custom-select" style="max-width:50%">
+            <option selected>Select Username</option>
+            {% for row in usernames %}
+                <option value="{{ row["username"] }}">{{ row["username"] }}</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-primary" type="submit">Go</button>
+    <!-- Material unchecked -->
+    <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="editMode" name="editMode">
+        <label class="form-check-label" for="editMode">Edit Mode</label>
+    </div>
+    <br>
+  </form>
+  <!--Table with attendance information-->
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">Subteam</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{USERNAME}}</td>
+              <td>{{SUBTEAM}}</td>
+            </tr>
+         </tbody>
+    </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Login Time</th>
+          <th scope="col">Logout Time</th>
+          <th scope="col">Hours Logged In</th>
+          <th scope="col">Minutes Logged In</th>
+          <th scope="col">Approved</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+          <tr>
+            <td>{{row["LITime"]}}</td>
+            <td>{{row["LOTime"]}}</td>
+            <td>{{row["Hours"]}}</td>
+            <td>{{row["Minutes"]}}</td>
+            <td>{{row["approved"]}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">Subteam</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{USERNAME}}</td>
+              <td>{{SUBTEAM}}</td>
+            </tr>
+         </tbody>
+    </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Login Time</th>
+          <th scope="col">Logout Time</th>
+          <th scope="col">Hours Logged In</th>
+          <th scope="col">Minutes Logged In</th>
+          <th scope="col">Approved</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+          <tr>
+            <td>{{row["LITime"]}}</td>
+            <td>{{row["LOTime"]}}</td>
+            <td>{{row["Hours"]}}</td>
+            <td>{{row["Minutes"]}}</td>
+            <td>{{row["approved"]}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+{% endblock %}

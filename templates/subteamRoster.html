@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Subteam Roster
+{% endblock %}
+
+{% block main %}
+      <table class="table">
+          <thead>
+              <tr>
+                <!--display total team information-->
+                <th scope="col">Total Team Hours</th>
+                <th scope="col">Total Team Minutes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{TTHOURS}}</td>
+                <td>{{TTMINUTES}}</td>
+              </tr>
+           </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <!--display total subteam information-->
+            <th scope="col">Subteam</th>
+            <th scope="col">Hours Logged In</th>
+            <th scope="col">Minutes Logged In</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in subteamList %}
+            <tr>
+              <td>{{row["subteam"]}}</td>
+              <td>{{row["hours"]}}</td>
+              <td>{{row["minutes"]}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Hours Logged In</th>
+            <th scope="col">Minutes Logged In</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- display member information -->
+          {% for row in memberList %}
+            <tr>
+              <td>{{row["username"]}}</td>
+              <td>{{row["hours"]}}</td>
+              <td>{{row["minutes"]}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

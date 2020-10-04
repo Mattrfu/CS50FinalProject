@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    <!-- Change Log In Information? -->
+    Change Account Information
+{% endblock %}
+
+{% block main %}
+    <form action="/changeAccountInfo" method="post">
+        <!--Change username-->
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="New Username" type="text">
+        </div>
+        <!--Change password-->
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="New Password" type="password">
+        </div>
+        <!--Confirm password-->
+        <div class="form-group">
+            <input class="form-control" name="confirmation" placeholder=" New Password (again)" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Change Account Information</button>
+    </form>
+{% endblock %}

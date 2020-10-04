@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete History
+{% endblock %}
+
+{% block main %}
+    <form action="/delete" method ="post">
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">Subteam</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id = "id" name="id">{{USERNAME}}</td>
+              <td>{{SUBTEAM}}</td>
+            </tr>
+         </tbody>
+    </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Login Time</th>
+          <th scope="col">Logout Time</th>
+          <th scope="col">Hours Logged In</th>
+          <th scope="col">Minutes Logged In</th>
+          <th scope="col">Approved</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+          <tr>
+            <td>{{row["LITime"]}}</td>
+            <td>{{row["LOTime"]}}</td>
+            <td>{{row["Hours"]}}</td>
+            <td>{{row["Minutes"]}}</td>
+            <td>{{row["approved"]}}</td>
+            <!-- Material unchecked -->
+            <td><div class="form-check">
+                <input type="checkbox" class="form-check-input" id={{row['id']}} name={{row['id']}}>
+                <label class="form-check-label" for={{row['id']}}></label>
+            </div></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <!--Delete button-->
+    <button class="btn btn-danger" type="submit">Delete</button>
+  </form>
+
+{% endblock %}
