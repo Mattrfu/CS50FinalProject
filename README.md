@@ -1,5 +1,5 @@
 # CS50FinalProject
-Attendance Tracker for a friend's high school robotics team.
+Attendance Tracker for a friend's high school robotics team. This was created for my team's final project in CS50 (Introuction to Computer Science at Harvard University)
 
 # Why we built it
 While various attendance trackers exist already, we wanted to create something that did not require a lot of work for the user to get started. More or less, we wanted attendance to be completed quickly and reliabely, so people could gauge how much time they spent work on the robotics project.
